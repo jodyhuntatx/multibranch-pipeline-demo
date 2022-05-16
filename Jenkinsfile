@@ -11,6 +11,7 @@ pipeline {
   stages {
 
    stage('Test') {
+      steps {
        withCredentials([
 	conjurSecretCredential(credentialsId: 'DemoVault-CICD-CICD_Secrets-MySQL-username', variable: 'DB_UNAME'),
         conjurSecretCredential(credentialsId: 'DemoVault-CICD-CICD_Secrets-MySQL-password', variable: 'DB_PWD')
@@ -23,9 +24,11 @@ pipeline {
 		sh "echo DB_PWD=$DB_PWD >> /demo/demo.out"
 		sh "echo >> /demo/demo.out"
        }
+     }
    }
 
    stage('Prod') {
+     steps {
        withCredentials([
 	conjurSecretCredential(credentialsId: 'DemoVault-CICD-CICD_Secrets-MSSQLserver-username', variable: 'DB_UNAME'),
         conjurSecretCredential(credentialsId: 'DemoVault-CICD-CICD_Secrets-MSSQLserver-password', variable: 'DB_PWD')
@@ -35,6 +38,7 @@ pipeline {
 		sh "echo DB_PWD=$DB_PWD >> /demo/demo.out"
 		sh "echo ######## >> /demo/demo.out"
        }
+     }
    }
 
    stage('Results') {
