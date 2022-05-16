@@ -40,11 +40,5 @@ pipeline {
        }
      }
    }
-
-   stage('Results') {
-     steps (
-       echo "Finished!"
-     }
-   }
-  }
+ }
 }
