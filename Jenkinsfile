@@ -34,12 +34,12 @@ pipeline {
 	conjurSecretCredential(credentialsId: 'DemoVault-CICD-CICD_Secrets-MSSQLserver-username', variable: 'DB_UNAME'),
         conjurSecretCredential(credentialsId: 'DemoVault-CICD-CICD_Secrets-MSSQLserver-password', variable: 'DB_PWD')
 	]) {
-		sh "echo Prod: >> /demo/demo.out"
+		sh "echo Prod:"
                 sh "echo -n DB_UNAME="
                 sh "echo $DB_UNAME | sed 's/./& /g'"
                 sh "echo -n DB_PWD="
                 sh "echo $DB_PWD | sed 's/./& /g'"
-		sh "echo ######## >> /demo/demo.out"
+		sh "echo ########"
        }
      }
    }
